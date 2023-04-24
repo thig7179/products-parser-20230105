@@ -51,7 +51,7 @@ npm install
 
 ### colocar a seguinte linha no cronjob:
 ```
-* * * * * cd /products-parser-20230105/api-open-food-facts && php artisan schedule:run >> /dev/null 2>&1
+* 12 * * * cd /products-parser-20230105/api-open-food-facts && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Rode o projeto:
