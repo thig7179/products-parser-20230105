@@ -38,4 +38,16 @@ class Product extends Eloquent
         'image_url',
 
     ];
+
+    public function stastusImport() {
+        return $this->hasMany(ProductStatus::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($product) {
+            $product->stastusImport()->delete();
+        });
+    }
 }
