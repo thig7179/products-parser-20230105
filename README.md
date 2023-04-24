@@ -18,11 +18,11 @@ A remoção de produtos é somente a alteração do status dele para trash.
 
 Na REST API temos um CRUD com os seguintes endpoints:
 
- - `GET /`: Detalhes da API, se conexão leitura e escritura com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.
- - `PUT /products/:code`: Será responsável por receber atualizações do Projeto Web
- - `DELETE /products/:code`: Mudar o status do produto para `trash`
- - `GET /products/:code`: Obter a informação somente de um produto da base de dados
- - `GET /products`: Listar todos os produtos da base de dados, adicionar sistema de paginação para não sobrecarregar o `REQUEST`.
+ - `api/GET/`: Detalhes da API, se conexão leitura e escritura com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.
+ - `api/PUT/products/:code`: Será responsável por receber atualizações do Projeto Web
+ - `api/DELETE/products/:code`: Mudar o status do produto para `trash`
+ - `api/GET/products/:code`: Obter a informação somente de um produto da base de dados
+ - `api/GET/products`: Listar todos os produtos da base de dados, adicionar sistema de paginação para não sobrecarregar o `REQUEST`.
 
 ## Rodar o projeto
 
@@ -47,6 +47,11 @@ No .env atribua o nome da base mongodb em DB_DATABASE
 ```
 composer install
 npm install
+```
+
+### colocar a seguinte linha no cronjob:
+```
+* * * * * cd /products-parser-20230105/api-open-food-facts && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Rode o projeto:
