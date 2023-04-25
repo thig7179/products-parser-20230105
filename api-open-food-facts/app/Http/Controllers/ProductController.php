@@ -49,9 +49,12 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, Product $product)
+    public function update(Product $product, $code)
     {
-        //
+        $product = Product::where('code', '=', $code)->update([$product]);
+        if ($product) {
+            return response()->json(new BaseResponse(Product::where('code', '=', $code)->get()));
+        }
     }
 
     public function destroy($code)
