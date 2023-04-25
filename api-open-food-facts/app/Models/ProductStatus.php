@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class ProductStatus extends Model
+class ProductStatus extends Eloquent
 {
     use HasFactory;
     protected $connection = 'mongodb';
-    protected $collection = 'product';
+    protected $collection = 'product_statuses';
 
     protected $fillable = [
         'imported_t',
         'status',
     ];
 
-    public function stastusImport() {
+    public function product_statuses() {
         return $this->hasMany(ProductStatus::class);
     }
 
@@ -24,7 +25,7 @@ class ProductStatus extends Model
     {
         parent::boot();
         static::deleting(function ($product) {
-            $product->stastusImport()->delete();
+            $product->product_statuses()->delete();
         });
     }
 }

@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        return response()->json(new BaseResponse(Product::limit(100)->get()));
+        return response()->json(new BaseResponse(Product::paginate(100)));
     }
 
     public function create()
@@ -56,9 +56,9 @@ class ProductController extends Controller
 
     public function destroy($code)
     {
-        $product = Product::where('code', '=', $code)->get();
+        $product = Product::where('code', '=', $code)->update(['status'=>'trash']);
         if ($product) {
-            return response()->json(new BaseResponse(null, true, 'Produto deletado com sucesso', 'trash'));
+            return response()->json(new BaseResponse(Product::where('code', '=', $code)->get()));
         }
     }
 }
