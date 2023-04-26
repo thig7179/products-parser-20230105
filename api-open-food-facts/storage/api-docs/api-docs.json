@@ -1,0 +1,47 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Open Food Fact",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api"
+        }
+    ],
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "crud"
+                ],
+                "summary": "Listing all resources",
+                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
+                "responses": {
+                    "200": {
+                        "description": "Response success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successful action!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

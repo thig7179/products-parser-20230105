@@ -10,6 +10,39 @@ use App\WebService\OpenFoodFactsService;
 class ProductController extends Controller
 {
 
+    /**
+     * Insert this code on method index() on
+     * \App\Http\Controllers\ProductController.php
+     */
+
+    /**
+     * Listing all resources
+     *
+     * @OA\Get(
+     *   path="/api/products",
+     *   tags={"crud"},
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response success",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="Successful action!"
+     *         ),
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * @return array
+     */
     public function index()
     {
         return response()->json(new BaseResponse(Product::paginate(100)));
