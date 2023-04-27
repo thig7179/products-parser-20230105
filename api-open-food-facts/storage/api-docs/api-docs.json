@@ -142,15 +142,20 @@
                                         "type": "string",
                                         "example": "kiliweb"
                                     },
-                                    "created_t": {
-                                        "description": "creator kiliweb",
+                                    "product_name": {
+                                        "description": "name product",
                                         "type": "string",
-                                        "example": "1565504098"
+                                        "example": "Katharos"
                                     },
-                                    "created_datetime": {
+                                    "labels": {
+                                        "description": "name labels",
+                                        "type": "string",
+                                        "example": "en:gluten-free"
+                                    },
+                                    "labels_en": {
                                         "description": "date creator",
-                                        "type": "datetime",
-                                        "example": "2019-08-11T06:14:58Z"
+                                        "type": "string",
+                                        "example": "Gluten-free"
                                     }
                                 },
                                 "type": "object"

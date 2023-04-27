@@ -214,16 +214,22 @@ class ProductController extends Controller
      *                  example="kiliweb"
      *              ),
      *          @OA\Property(
-     *                  property="created_t",
+     *                  property="product_name",
      *                  type="string",
-     *                  description="creator kiliweb",
-     *                  example="1565504098"
+     *                  description="name product",
+     *                  example="Katharos"
      *              ),
      *          @OA\Property(
-     *                  property="created_datetime",
-     *                  type="datetime",
+     *                  property="labels",
+     *                  type="string",
+     *                  description="name labels",
+     *                  example="en:gluten-free"
+     *              ),
+     *          @OA\Property(
+     *                  property="labels_en",
+     *                  type="string",
      *                  description="date creator",
-     *                  example="2019-08-11T06:14:58Z"
+     *                  example="Gluten-free"
      *              )
      *          )
      *      )
