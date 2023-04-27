@@ -16,10 +16,10 @@ class ProductController extends Controller
      */
 
     /**
-     * Listing all resources
+     * Listing all products
      *
      * @OA\Get(
-     *   path="/api/products",
+     *   path="/products",
      *   tags={"crud"},
      *   @OA\Response(
      *     response=200,
@@ -28,9 +28,24 @@ class ProductController extends Controller
      *       mediaType="application/json",
      *       @OA\Schema(
      *         @OA\Property(
+     *           property="success",
+     *           type="bool",
+     *           example="true"
+     *         ),
+     *         @OA\Property(
+     *           property="data",
+     *           type="array",
+     *           @OA\Items(ref="App\Types\BaseResponse")
+     *         ),
+     *         @OA\Property(
      *           property="message",
      *           type="string",
-     *           example="Successful action!"
+     *           example="sucesso"
+     *         ),
+     *         @OA\Property(
+     *           property="status",
+     *           type="string",
+     *           example="active"
      *         ),
      *       )
      *     )
@@ -57,7 +72,59 @@ class ProductController extends Controller
     {
         //
     }
-
+    /**
+     * get one products
+     *
+     * @OA\Get(
+     *   path="/products/{code}",
+     *   tags={"crud"},
+     *   @OA\Parameter(
+     *     name="code",
+     *     in="path",
+     *     required=true,
+     *     description="Identification of code",
+     *     example=0000000,
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     * ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response success",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="success",
+     *           type="bool",
+     *           example="true"
+     *         ),
+     *         @OA\Property(
+     *           property="data",
+     *           type="array",
+     *           @OA\Items(ref="App\Types\BaseResponse")
+     *         ),
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="sucesso"
+     *         ),
+     *         @OA\Property(
+     *           property="status",
+     *           type="string",
+     *           example="active"
+     *         ),
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * @return array
+     */
     public function show($code)
     {
         $product = Product::where('code', '=', $code)->get();
@@ -81,7 +148,91 @@ class ProductController extends Controller
         //
     }
 
-
+    /**
+     * put one products
+     *
+     * @OA\Put(
+     *   path="/products/{code}",
+     *   tags={"crud"},
+     *   @OA\Parameter(
+     *     name="code",
+     *     in="path",
+     *     required=true,
+     *     description="Identification of code",
+     *     example=0000000,
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     * ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response success",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="success",
+     *           type="bool",
+     *           example="true"
+     *         ),
+     *         @OA\Property(
+     *           property="data",
+     *           type="array",
+     *           @OA\Items(ref="App\Types\BaseResponse")
+     *         ),
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="sucesso"
+     *         ),
+     *         @OA\Property(
+     *           property="status",
+     *           type="string",
+     *           example="active"
+     *         ),
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="an ""unexpected"" error"
+     *   ),
+     *  @OA\RequestBody(
+     *      @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *              @OA\Property(
+     *                  property="url",
+     *                  type="string",
+     *                  description="url.",
+     *                  example="http://world-en.openfood…t/8718215090328/katharos"
+     *              ),
+     *          @OA\Property(
+     *                  property="creator",
+     *                  type="string",
+     *                  description="creator kiliweb",
+     *                  example="kiliweb"
+     *              ),
+     *          @OA\Property(
+     *                  property="created_t",
+     *                  type="string",
+     *                  description="creator kiliweb",
+     *                  example="1565504098"
+     *              ),
+     *          @OA\Property(
+     *                  property="created_datetime",
+     *                  type="datetime",
+     *                  description="date creator",
+     *                  example="2019-08-11T06:14:58Z"
+     *              )
+     *          )
+     *      )
+     *  )
+     *   
+     * )
+     *
+     * @return array
+     */
     public function update(Product $product, $code)
     {
         $product = Product::where('code', '=', $code)->update([$product]);
@@ -89,7 +240,59 @@ class ProductController extends Controller
             return response()->json(new BaseResponse(Product::where('code', '=', $code)->get()));
         }
     }
-
+    /**
+     * Delete one products
+     *
+     * @OA\Delete(
+     *   path="/products/{code}",
+     *   tags={"crud"},
+     *   @OA\Parameter(
+     *     name="code",
+     *     in="path",
+     *     required=true,
+     *     description="Identification of code",
+     *     example=0000000,
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     * ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Response success",
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         @OA\Property(
+     *           property="success",
+     *           type="bool",
+     *           example="true"
+     *         ),
+     *         @OA\Property(
+     *           property="data",
+     *           type="array",
+     *           @OA\Items(ref="App\Types\BaseResponse")
+     *         ),
+     *         @OA\Property(
+     *           property="message",
+     *           type="string",
+     *           example="sucesso"
+     *         ),
+     *         @OA\Property(
+     *           property="status",
+     *           type="string",
+     *           example="active"
+     *         ),
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="default",
+     *     description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * @return array
+     */
     public function destroy($code)
     {
         $product = Product::where('code', '=', $code)->update(['status'=>'trash']);

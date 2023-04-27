@@ -10,13 +10,13 @@
         }
     ],
     "paths": {
-        "/api/products": {
+        "/products": {
             "get": {
                 "tags": [
                     "crud"
                 ],
-                "summary": "Listing all resources",
-                "operationId": "1bfaa78d1c2c3848ab8165c5dadcad3e",
+                "summary": "Listing all products",
+                "operationId": "c1ff6f862214e1896c59cfe0491ce0e8",
                 "responses": {
                     "200": {
                         "description": "Response success",
@@ -24,9 +24,218 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "App\\Types\\BaseResponse"
+                                            }
+                                        },
                                         "message": {
                                             "type": "string",
-                                            "example": "Successful action!"
+                                            "example": "sucesso"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "active"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            }
+        },
+        "/products/{code}": {
+            "get": {
+                "tags": [
+                    "crud"
+                ],
+                "summary": "get one products",
+                "operationId": "49b03d87d85276e8020558b6ee931937",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Identification of code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "App\\Types\\BaseResponse"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "sucesso"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "active"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "crud"
+                ],
+                "summary": "put one products",
+                "operationId": "3ca6aab99570e78efd32bac1e792c4d2",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Identification of code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 0
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "description": "url.",
+                                        "type": "string",
+                                        "example": "http://world-en.openfood…t/8718215090328/katharos"
+                                    },
+                                    "creator": {
+                                        "description": "creator kiliweb",
+                                        "type": "string",
+                                        "example": "kiliweb"
+                                    },
+                                    "created_t": {
+                                        "description": "creator kiliweb",
+                                        "type": "string",
+                                        "example": "1565504098"
+                                    },
+                                    "created_datetime": {
+                                        "description": "date creator",
+                                        "type": "datetime",
+                                        "example": "2019-08-11T06:14:58Z"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "App\\Types\\BaseResponse"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "sucesso"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "active"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "crud"
+                ],
+                "summary": "Delete one products",
+                "operationId": "1e3eeae3513271993540a6fa928cbc6f",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Identification of code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "bool",
+                                            "example": "true"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "App\\Types\\BaseResponse"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "sucesso"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "active"
                                         }
                                     },
                                     "type": "object"

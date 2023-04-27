@@ -26,6 +26,9 @@
       margin:0;
       background: #fafafa;
     }
+    .errors-wrapper {
+    display: none !important;
+    }
   </style>
 </head>
 
